@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Registeration</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Register Cloud Storage">
+	<meta name="author" content="VenkatRamanan">
+<!--===============================================================================================-->	
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+<script type="text/javascript">
+function validation(){
+if(document.validate.name.value=="")
+{
+alert("enter the full name")
+document.validate.name.focus();
+return false
+}
+if(!isNaN(document.validate.name.value))
+{
+alert("enter the valid name");
+document.validate.name.focus();
+document.validate.name.value="";
+return false
+}
+ if(!document.validate.name.value.match(/^[A-Za-z .]+$/))
+  {
+alert("enter a valid name");
+document.validate.name.focus();
+document.validate.name.value="";
+return false;
+}            
+
+if(document.validate.email.value=="")
+{
+alert("enter the email id")
+document.validate.email.focus();
+return false
+}
+
+if(!(document.validate.email.value==""))
+{
+var x=document.validate.email.value
+var atpos=x.indexOf("@");
+var dotpos=x.lastIndexOf(".");
+if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length)
+  {
+  alert("Not a valid e-mail address");
+  document.validate.email.focus();
+  return false;
+  }
+}
+if(document.validate.mobile.value=="")
+{
+alert("enter the mobile no")
+document.validate.mobile.focus();
+return false
+}
+if( isNaN(document.validate.mobile.value))
+{
+alert("enter a valid mobile no")
+document.validate.mobile.focus();
+document.validate.mobile.value="";
+return false
+}
+if(document.validate.mobile.value.length !=10)
+{
+alert("enter the valid mobile no")
+document.validate.mobile.focus();
+document.validate.mobile.select();
+return false
+}
+
+if(document.validate.pass.value == document.validate.repass.value)
+{
+if(document.validate.pass.value.length < 8)
+{
+	alert("Enter password more then 8 ");
+	document.validate.pass.focus();
+	return false
+}
+re=/[0-9]/;
+if(!re.test(document.validate.pass.value))
+{
+alert("Password containe at least one Number")
+document.validate.pass.focus();
+return false
+}
+re=/[a-z]/;
+if(!re.test(document.validate.pass.value))
+{
+	alert("Password contain atleast on Lowercase Letter");
+	document.validate.pass.focus();
+	return false
+}
+re=/[A-Z]/
+if(!re.test(document.validate.pass.value))
+{
+	alert("Password Contain at least on Upper case Letter");
+	document.validate.pass.focus();
+	return false
+}
+re=/^\w+$/;
+if(re.test(document.validate.pass.value))
+{
+	alert("password contain at least one Special character");
+	document.validate.pass.focus();
+	return false
+}
+}
+else
+{
+	alert("Please check Confirm Password");
+	document.validate.pass.focus();
+	return false
+}
+document.getElementById('theForm').submit();
+}
+</script>
+
+</head>
+<body>
+<!--Navigation Bar-->
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+<div class="container">
+  		<a class="navbar-brand" href="#">Cloud Storage</a>
+  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    				<span class="navbar-toggler-icon"></span>
+ 			 </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.php">Login </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="register.html">Register</a>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+	<br>
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+			<div class="wrap-login100 p-t-30 p-b-50">
+				<span class="login100-form-title p-b-41">
+					Registeration Page 
+				</span>
+				<form class="login100-form validate-form p-b-33 p-t-5" name="validate"action="reg.php" method="POST" id="theform">
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter username">
+						<input class="input100" type="text" name="name" id="name" placeholder="User name">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Enter Email">
+						<input class="input100" type="text" name="email" id="email" placeholder="Email">
+						<span class="focus-input100" data-placeholder="&#xe818;"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Phone Number">
+						<input class="input100" size="10" type="text" name="mobile" id="mobile" placeholder="Mobile No">
+						<span class="focus-input100" data-placeholder="&#xe830;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input class="input100" type="password" name="pass" id="pass" placeholder="Password">
+						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Re-Enter password">
+						<input class="input100" type="password" name="repass" id="repass" placeholder="Retype-Password">
+						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+					</div>
+				<br>
+					<center>i have alerady an account <a class="text-danger"href="index.php">Login</a></center>
+
+					<div class="container-login100-form-btn m-t-32">
+						<button class="login100-form-btn" onclick="return validation();">
+							Register
+						</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>	
+<!-- Footer-->
+
+ <footer class="py-5 bg-dark ">
+    <div class="container">
+      <p class="m-0 text-center text-white small">Copyright &copy; File Safe 2020</p>
+    </div>
+  </footer>
+
+
+	
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>
